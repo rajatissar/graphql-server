@@ -1,0 +1,30 @@
+{
+  "name": "graphql-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/.bin/babel-node index.js",
+    "dev": "./node_modules/.bin/nodemon index.js --exec ./node_modules/.bin/babel-node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rajatissar/graphql-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rajatissar/graphql-server/issues"
+  },
+  "homepage": "https://github.com/rajatissar/graphql-server#readme",
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0"
+  }
+}
