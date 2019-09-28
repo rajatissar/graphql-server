@@ -5,7 +5,14 @@ import user_schema from './data/schema';
 const PORT = 4000;
 const app = express();
 
-app.use('/', express_HTTP({ schema: user_schema, graphiql: true }));
+app.use(
+  '/',
+  express_HTTP({
+    schema: user_schema,
+    graphiql: true, // presents GraphiQL when the GraphQL endpoint is loaded in a browser
+    pretty: true // any JSON response will be pretty-printed
+  })
+);
 app.listen(PORT, (error) => {
   if (error) {
     console.log(error);
