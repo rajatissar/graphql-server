@@ -1,32 +1,6 @@
-import { GraphQLObjectType, GraphQLString } from 'graphql';
-
-const user_query_input = {
-  user_id: {
-    type: GraphQLString,
-    description: 'user_id of user'
-  }
-};
-
-const user_query_output = new GraphQLObjectType({
-  name: 'user_output',
-  description: 'user detail',
-  fields: () => {
-    return {
-      user_name: {
-        type: GraphQLString,
-        resolve(user) {
-          return user.user_name;
-        }
-      },
-      user_email: {
-        type: GraphQLString,
-        resolve(user) {
-          return user.user_email;
-        }
-      }
-    };
-  }
-});
+import { GraphQLObjectType } from 'graphql';
+import find_user_input from '../model/input/find-user';
+import find_user_output from '../model/output/find-user';
 
 const user_query = new GraphQLObjectType({
   name: 'query',
@@ -34,8 +8,8 @@ const user_query = new GraphQLObjectType({
   fields: () => {
     return {
       find_user: {
-        type: user_query_output,
-        args: user_query_input,
+        type: find_user_output,
+        args: find_user_input,
         resolve(root, args, req, res) {
           const return_obj = {};
           const { user_id } = args;
