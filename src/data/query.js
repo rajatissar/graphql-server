@@ -1,7 +1,14 @@
 import { GraphQLObjectType, GraphQLString } from 'graphql';
 
+const user_query_input = {
+  user_id: {
+    type: GraphQLString,
+    description: 'user_id of user'
+  }
+};
+
 const user_query_output = new GraphQLObjectType({
-  name: 'user',
+  name: 'user_output',
   description: 'user detail',
   fields: () => {
     return {
@@ -22,17 +29,24 @@ const user_query_output = new GraphQLObjectType({
 });
 
 const user_query = new GraphQLObjectType({
-  name: 'user_query',
-  description: 'Simple query to fetch user data',
+  name: 'query',
+  description: 'This is a root query',
   fields: () => {
     return {
-      query_user: {
+      find_user: {
         type: user_query_output,
-        resolve() {
-          return {
-            user_name: 'Rajat',
-            user_email: 'rajat.kumar@daffodilsw.com'
-          };
+        args: user_query_input,
+        resolve(root, args, req, res) {
+          const return_obj = {};
+          const { user_id } = args;
+          if (user_id === '1') {
+            return_obj.user_name = 'Rajat';
+          } else if (user_id === '2') {
+            return_obj.user_name = 'Samrat';
+          } else {
+            return_obj.user_name = 'user is not in database';
+          }
+          return return_obj;
         }
       }
     };
