@@ -2,7 +2,7 @@ import express from 'express';
 import express_HTTP from 'express-graphql';
 import user_schema from './data/schema';
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4001;
 const app = express();
 
 app.use(
@@ -10,7 +10,10 @@ app.use(
   express_HTTP({
     schema: user_schema,
     graphiql: true, // presents GraphiQL when the GraphQL endpoint is loaded in a browser
-    pretty: true // any JSON response will be pretty-printed
+    pretty: true, // any JSON response will be pretty-printed,
+    context: {
+      graphql_context: 'nothing'
+    }
   })
 );
 app.listen(PORT, (error) => {

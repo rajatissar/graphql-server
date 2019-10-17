@@ -10,7 +10,7 @@ const user_query = new GraphQLObjectType({
       find_user: {
         type: find_user_output,
         args: find_user_input,
-        resolve(root, args, req, res) {
+        resolve(root, args, context) {
           const return_obj = {};
           const { user_id } = args;
           if (user_id === '1') {
