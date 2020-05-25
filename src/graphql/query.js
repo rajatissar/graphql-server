@@ -1,6 +1,7 @@
 import { GraphQLObjectType } from 'graphql';
 import find_user_input from './input/find-user';
 import find_user_output from './output/find-user';
+import users from './data.json';
 
 const root_query = new GraphQLObjectType({
   name: 'root_query',
@@ -10,16 +11,12 @@ const root_query = new GraphQLObjectType({
       type: find_user_output,
       args: find_user_input,
       resolve(root, args) {
-        const return_obj = {};
         const { user_id } = args;
-        if (user_id === '1') {
-          return_obj.user_name = 'Rajat';
-        } else if (user_id === '2') {
-          return_obj.user_name = 'Samrat';
-        } else {
-          return_obj.user_name = 'user_not_found';
+        const user = users.filter((user_1) => user_1.user_id === user_id);
+        if (user.length) {
+          return user[0];
         }
-        return return_obj;
+        return {};
       },
     },
   }),

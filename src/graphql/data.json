@@ -1,0 +1,17 @@
+[
+  {
+    "user_id": "1",
+    "user_name": "Rajat",
+    "user_email": "rajat.kumar@daffodilsw.com"
+  },
+  {
+    "user_id": "2",
+    "user_name": "Suvankar",
+    "user_email": "suvanker@daffodilsw.com"
+  },
+  {
+    "user_id": "3",
+    "user_name": "Ankur",
+    "user_email": "ankur@daffodilsw.com"
+  }
+]
