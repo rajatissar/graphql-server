@@ -1,9 +1,15 @@
 import { GraphQLObjectType, GraphQLString } from 'graphql';
 
-const find_user_output = new GraphQLObjectType({
-  name: 'find_user_output',
+const create_user_output = new GraphQLObjectType({
+  name: 'create_user_output',
   description: 'user detail',
   fields: () => ({
+    user_id: {
+      type: GraphQLString,
+      resolve(user) {
+        return user.user_id;
+      },
+    },
     user_name: {
       type: GraphQLString,
       resolve(user) {
@@ -19,4 +25,4 @@ const find_user_output = new GraphQLObjectType({
   }),
 });
 
-export default find_user_output;
+export default create_user_output;
