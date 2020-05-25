@@ -1,9 +1,9 @@
 import { GraphQLSchema } from 'graphql';
-import { user_query } from './query';
+import { root_query } from './query';
 // import { user_mutation } from './mutation';
 
 const schema = new GraphQLSchema({
-  query: user_query
+  query: root_query,
   //   mutation: user_mutation
 });
 

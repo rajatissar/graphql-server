@@ -1,10 +1,10 @@
 import { GraphQLObjectType } from 'graphql';
-import find_user_input from '../model/input/find-user';
-import find_user_output from '../model/output/find-user';
+import find_user_input from './input/find-user';
+import find_user_output from './output/find-user';
 
-const user_query = new GraphQLObjectType({
-  name: 'query',
-  description: 'This is a root query',
+const root_query = new GraphQLObjectType({
+  name: 'root_query',
+  description: 'This is the root query',
   fields: () => ({
     find_user: {
       type: find_user_output,
@@ -17,12 +17,12 @@ const user_query = new GraphQLObjectType({
         } else if (user_id === '2') {
           return_obj.user_name = 'Samrat';
         } else {
-          return_obj.user_name = 'user is not in database';
+          return_obj.user_name = 'user_not_found';
         }
         return return_obj;
-      }
-    }
-  })
+      },
+    },
+  }),
 });
 
-export { user_query };
+export { root_query };
