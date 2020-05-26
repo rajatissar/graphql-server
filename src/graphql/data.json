@@ -1,17 +1,26 @@
 [
   {
     "user_id": "1",
-    "user_name": "Rajat",
+    "user_name": {
+      "first": "rajat",
+      "last": "kumar"
+    },
     "user_email": "rajat.kumar@daffodilsw.com"
   },
   {
     "user_id": "2",
-    "user_name": "Suvankar",
+    "user_name": {
+      "first": "Suvankar",
+      "last": "majumdar"
+    },
     "user_email": "suvanker@daffodilsw.com"
   },
   {
     "user_id": "3",
-    "user_name": "Ankur",
+    "user_name": {
+      "first": "Ankur",
+      "last": "Gaytonde"
+    },
     "user_email": "ankur@daffodilsw.com"
   }
 ]

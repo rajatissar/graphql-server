@@ -1,5 +1,20 @@
 import { GraphQLObjectType, GraphQLString } from 'graphql';
 
+const create_user_output_user_name = new GraphQLObjectType({
+  name: 'create_user_output_user_name',
+  description: 'name of user',
+  fields: () => ({
+    first: {
+      type: GraphQLString,
+      resolve: (name) => name.first,
+    },
+    last: {
+      type: GraphQLString,
+      resolve: (name) => name.last,
+    },
+  }),
+});
+
 const create_user_output = new GraphQLObjectType({
   name: 'create_user_output',
   description: 'user detail',
@@ -11,7 +26,7 @@ const create_user_output = new GraphQLObjectType({
       },
     },
     user_name: {
-      type: GraphQLString,
+      type: create_user_output_user_name,
       resolve(user) {
         return user.user_name;
       },

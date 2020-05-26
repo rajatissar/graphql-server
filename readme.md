@@ -107,3 +107,29 @@ query user_operation_name($variable_1: String = "2", $with_user_email:Boolean = 
   "with_user_email": true
 }
 ```
+
+### 7. __typename
+
+```graphql
+query user_operation_name($variable_1: String = "7", $with_user_email:Boolean = false){
+  find_user(user_id: $variable_1){
+    __typename
+    user_name
+    user_email @skip(if: $with_user_email)
+  }
+}
+```
+
+### 8. Inline Fragments
+
+```graphql
+query user_operation_name($variable_1: String = "1", $with_user_email:Boolean = false){
+  find_user(user_id: $variable_1){
+    __typename
+    ...on find_user_output{
+      user_name
+    }
+    user_email @skip(if: $with_user_email)
+  }
+}
+```
