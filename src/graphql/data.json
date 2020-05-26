@@ -5,7 +5,8 @@
       "first": "rajat",
       "last": "kumar"
     },
-    "user_email": "rajat.kumar@daffodilsw.com"
+    "user_email": "rajat.kumar@daffodilsw.com",
+    "user_state": "haryana"
   },
   {
     "user_id": "2",
@@ -13,7 +14,8 @@
       "first": "Suvankar",
       "last": "majumdar"
     },
-    "user_email": "suvanker@daffodilsw.com"
+    "user_email": "suvanker@daffodilsw.com",
+    "user_state": "west bengal"
   },
   {
     "user_id": "3",
@@ -21,6 +23,7 @@
       "first": "Ankur",
       "last": "Gaytonde"
     },
-    "user_email": "ankur@daffodilsw.com"
+    "user_email": "ankur@daffodilsw.com",
+    "user_state": "utrakhand"
   }
 ]

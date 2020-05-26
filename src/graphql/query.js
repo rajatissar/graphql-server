@@ -13,8 +13,13 @@ const root_query = new GraphQLObjectType({
       type: find_user_output,
       args: find_user_input,
       resolve: (root, args) => {
-        const { user_id } = args;
-        const user = users.filter((user_1) => user_1.user_id === user_id);
+        const { user_id, user_state } = args;
+        let user = {};
+        if (user_id) {
+          user = users.filter((user_1) => user_1.user_id === user_id);
+        } else if (user_state) {
+          user = users.filter((user_1) => user_1.user_state === user_state);
+        }
         if (user.length) {
           return user[0];
         }
