@@ -8,9 +8,11 @@ const root_query = new GraphQLObjectType({
   description: 'This is the root query',
   fields: () => ({
     find_user: {
+      name: 'find_user',
+      description: 'query to find user',
       type: find_user_output,
       args: find_user_input,
-      resolve(root, args) {
+      resolve: (root, args) => {
         const { user_id } = args;
         const user = users.filter((user_1) => user_1.user_id === user_id);
         if (user.length) {

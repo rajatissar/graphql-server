@@ -5,28 +5,28 @@ const create_user_input_user_name = new GraphQLInputObjectType({
   description: 'name of user',
   fields: () => ({
     first: {
-      type: GraphQLString,
       description: 'first name of user',
+      type: GraphQLString,
     },
     last: {
-      type: GraphQLString,
       description: 'last name of user',
+      type: GraphQLString,
     },
   }),
 });
 
 const create_user_input = {
   user_id: {
-    type: GraphQLString,
     description: 'user_id of user',
+    type: GraphQLString,
   },
   user_name: {
-    type: create_user_input_user_name,
     description: 'user_name of user',
+    type: create_user_input_user_name,
   },
   user_email: {
-    type: GraphQLString,
     description: 'user_email of user',
+    type: GraphQLString,
   },
 };
 

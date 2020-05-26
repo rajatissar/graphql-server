@@ -5,22 +5,63 @@
 1. [express-graphql](https://www.npmjs.com/package/express-graphql)
 2. [graphql](https://github.com/graphql/graphiql)
 
-## RootQuery
+## Query
 
 - name
 - description
 - fields() [it contains various query]
+  - name
+  - description
   - type [output]
   - args [input]
   - resolve(root,args,req,res)
 
-## type
+### type (query)
 
 - name
 - description
 - fields()
+  - description
   - type
   - resolve
+
+### args (query)
+
+- description
+- type
+
+## Mutation
+
+- name
+- description
+- fields() [it contains various query]
+  - name
+  - description
+  - type [output]
+  - args [input]
+  - resolve(root,args,req,res)
+
+### type (mutation)
+
+- name
+- description
+- fields()
+  - description
+  - type
+  - resolve
+
+### args (mutation)
+
+- description
+- type
+
+or
+
+- name
+- description
+- fields()
+  - description
+  - type
 
 ## Queries and Mutations
 

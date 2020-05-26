@@ -9,10 +9,10 @@ const root_mutation = new GraphQLObjectType({
   description: 'This is the root mutation',
   fields: () => ({
     create_user: {
-      description: 'function to create a new user',
+      description: 'mutation to create a new user',
       type: create_user_output,
       args: create_user_input,
-      resolve(root, args) {
+      resolve: (root, args) => {
         const user = args;
         user.user_id = users.length + 1;
         users.push(user);
