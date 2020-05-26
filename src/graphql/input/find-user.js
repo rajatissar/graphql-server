@@ -11,16 +11,24 @@ const find_user_input = {
       name: 'state_of_user',
       values: {
         haryana: {
+          description: 'land of milk',
           value: 'haryana',
         },
         west_bengal: {
+          description: 'land of bengali',
           value: 'west bengal',
         },
         utrakhand: {
+          description: 'land of temples',
           value: 'utrakhand',
         },
         pb: {
+          description: 'land of five rivers',
           value: 'punjab',
+        },
+        up: {
+          description: 'land of bahubali',
+          value: 'uttar pardesh',
         },
       },
     }),

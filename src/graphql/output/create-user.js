@@ -19,7 +19,7 @@ const create_user_output_user_name = new GraphQLObjectType({
 
 const create_user_output = new GraphQLObjectType({
   name: 'create_user_output',
-  description: 'user data',
+  description: 'user_data',
   fields: () => ({
     user_id: {
       description: 'user_id of user',

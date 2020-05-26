@@ -2,7 +2,7 @@ import { GraphQLObjectType } from 'graphql';
 
 import create_user_input from './input/create-user';
 import create_user_output from './output/create-user';
-import users from './data.json';
+import users from '../data.json';
 
 const root_mutation = new GraphQLObjectType({
   name: 'root_mutation',

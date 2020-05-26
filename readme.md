@@ -1,9 +1,12 @@
 # GraphQL
 
+GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data.
+
 ## Popular links
 
 1. [express-graphql](https://www.npmjs.com/package/express-graphql)
 2. [graphql](https://github.com/graphql/graphiql)
+3. [graphql.org/learn](https://graphql.org/learn)
 
 ## Query
 
@@ -14,7 +17,7 @@
   - description
   - type [output]
   - args [input]
-  - resolve(root,args,req,res)
+  - resolve(obj, args, context, info)
 
 ### type (query)
 
@@ -62,6 +65,15 @@ or
 - fields()
   - description
   - type
+
+### resolver
+
+A resolver function receives four arguments:
+
+- obj: The previous object, which for a field on the root Query type is often not used.
+- args: The arguments provided to the field in the GraphQL query.
+- context: A value which is provided to every resolver and holds important contextual information like the currently logged in user, or access to a database.
+- info: A value which holds field-specific information relevant to the current query as well as the schema details, also refer to type GraphQLResolveInfo for more details.
 
 ## Queries and Mutations
 
@@ -193,6 +205,59 @@ query user_operation_name($variable_1: String = "1") {
         first
         last
       }
+    }
+  }
+}
+```
+
+### 9. Introspection
+
+```graphql
+{
+  __schema {
+    types {
+      name
+      description
+    }
+  }
+}
+```
+
+```graphql
+{
+  __schema {
+    queryType {
+      name
+      description
+    }
+  }
+}
+```
+
+```graphql
+{
+  __type(name: "find_user_output_user_name") {
+    name
+    fields {
+      description
+      type {
+        name
+        description
+      }
+    }
+    kind
+  }
+}
+```
+
+```graphql
+{
+  __type(name: "state_of_user") {
+    name
+    kind
+    enumValues {
+      description
+      name
     }
   }
 }

@@ -1,7 +1,7 @@
 import { GraphQLObjectType } from 'graphql';
 import find_user_input from './input/find-user';
 import find_user_output from './output/find-user';
-import users from './data.json';
+import users from '../data.json';
 
 const root_query = new GraphQLObjectType({
   name: 'root_query',
@@ -12,7 +12,7 @@ const root_query = new GraphQLObjectType({
       description: 'query to find user',
       type: find_user_output,
       args: find_user_input,
-      resolve: (root, args) => {
+      resolve: (obj, args, context, info) => {
         const { user_id, user_state } = args;
         let user = {};
         if (user_id) {
