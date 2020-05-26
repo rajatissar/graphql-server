@@ -32,13 +32,19 @@ While query fields are executed in parallel, mutation fields run in series, one 
 
 ### 3. Aliases
 
-```JSON
+```graphql
 query user_operation_name {
   one: find_user(user_id:"1"){
-    user_name
+    user_name{
+      first
+      last
+    }
   }
   two: find_user(user_id:"2"){
-    user_name
+    user_name{
+      first
+      last
+    }
   }
 }
 ```
@@ -48,7 +54,7 @@ query user_operation_name {
 GraphQL includes reusable units called fragments.
 Fragments let you construct sets of fields, and then include them in queries where you need to.
 
-```JSON
+```graphql
 query user_operation_name {
   one: find_user(user_id:"1"){
     ...fragment_1
@@ -61,18 +67,26 @@ query user_operation_name {
   }
 }
 
-fragment fragment_1 on user_output{
-  user_name
+fragment fragment_1 on find_user_output{
+  user_name{
+    first
+    last
+  }
   user_email
 }
 ```
 
-### 5. Variables
+### 5. Operation Name + Variables
 
-```JSON
-query user_operation_name($variable_1: String = 2){
-  find_user(user_id: $variable_1){
-    user_name
+```graphql
+query user_operation_name($variable_1: String = "1", $variable_2: String = "2", $variable_4: String = "4") {
+  one: find_user(user_id: $variable_1) {
+    user_email
+  }
+  two: find_user(user_id: $variable_2) {
+    user_email
+  }
+  not_found: find_user(user_id: $variable_4) {
     user_email
   }
 }
@@ -80,7 +94,9 @@ query user_operation_name($variable_1: String = 2){
 
 ```JSON
 {
-  "variable_1": "1"
+  "variable_1": "1",
+  "variable_2": "2",
+  "variable_4": "4"
 }
 ```
 
@@ -92,10 +108,13 @@ The core GraphQL specification includes exactly two directives, which must be su
 - @include(if: Boolean) Only include this field in the result if the argument is true.
 - @skip(if: Boolean) Skip this field if the argument is true.
 
-```JSON
+```graphql
 query user_operation_name($variable_1: String = "2", $with_user_email:Boolean = false){
   find_user(user_id: $variable_1){
-    user_name
+    user_name {
+      first
+      last
+    }
     user_email @include(if: $with_user_email)
   }
 }
@@ -111,11 +130,14 @@ query user_operation_name($variable_1: String = "2", $with_user_email:Boolean = 
 ### 7. __typename
 
 ```graphql
-query user_operation_name($variable_1: String = "7", $with_user_email:Boolean = false){
+query user_operation_name($variable_1: String = "1"){
   find_user(user_id: $variable_1){
     __typename
-    user_name
-    user_email @skip(if: $with_user_email)
+    user_name {
+      __typename
+      first
+      last
+    }
   }
 }
 ```
@@ -123,13 +145,14 @@ query user_operation_name($variable_1: String = "7", $with_user_email:Boolean = 
 ### 8. Inline Fragments
 
 ```graphql
-query user_operation_name($variable_1: String = "1", $with_user_email:Boolean = false){
-  find_user(user_id: $variable_1){
-    __typename
-    ...on find_user_output{
-      user_name
+query user_operation_name($variable_1: String = "1") {
+  find_user(user_id: $variable_1) {
+    ... on find_user_output {
+      user_name {
+        first
+        last
+      }
     }
-    user_email @skip(if: $with_user_email)
   }
 }
 ```
