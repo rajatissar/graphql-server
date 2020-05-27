@@ -1,4 +1,10 @@
-import { GraphQLObjectType, GraphQLString } from 'graphql';
+import _ from 'lodash';
+import {
+  GraphQLInt,
+  GraphQLString,
+  GraphQLObjectType,
+  GraphQLList,
+} from 'graphql';
 
 const find_user_output_user_name = new GraphQLObjectType({
   description: 'name of user',
@@ -16,6 +22,17 @@ const find_user_output_user_name = new GraphQLObjectType({
     },
   }),
 });
+
+const friends_args = {
+  limit: {
+    description: 'limit of friends',
+    type: GraphQLInt,
+  },
+  offset: {
+    description: 'offset of friends',
+    type: GraphQLInt,
+  },
+};
 
 const find_user_output = new GraphQLObjectType({
   name: 'find_user_output',
@@ -35,6 +52,17 @@ const find_user_output = new GraphQLObjectType({
       description: 'user_email of user',
       type: GraphQLString,
       resolve: (user) => user.user_email,
+    },
+    friends: {
+      description: 'friends of user',
+      type: new GraphQLList(GraphQLString),
+      args: friends_args,
+      resolve: (user, args, context, info) => {
+        const limit = args.limit || 0;
+        const offset = args.offset || 0;
+        const offset_array = _.drop(user.friends, offset);
+        return _.take(offset_array, limit);
+      },
     },
   }),
 });

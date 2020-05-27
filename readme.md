@@ -7,10 +7,11 @@ GraphQL is a query language for APIs and a runtime for fulfilling those queries 
 1. [express-graphql](https://www.npmjs.com/package/express-graphql)
 2. [graphql](https://github.com/graphql/graphiql)
 3. [graphql.org/learn](https://graphql.org/learn)
-4. [Handling authentication in GraphQL - Introduction](https://blog.pusher.com/handling-authentication-in-graphql/)
-5. [Handling authentication in GraphQL - JWT](https://blog.pusher.com/handling-authentication-in-graphql-jwt/)
-6. [Handling authentication in GraphQL - Auth0](https://blog.pusher.com/handling-authentication-in-graphql-auth0/)
-7. [Handling authorization in GraphQL](https://pusher.com/tutorials/authorization-graphql)
+4. [graphql.org/graphql-js](https://graphql.org/graphql-js/)
+5. [Handling authentication in GraphQL - Introduction](https://blog.pusher.com/handling-authentication-in-graphql/)
+6. [Handling authentication in GraphQL - JWT](https://blog.pusher.com/handling-authentication-in-graphql-jwt/)
+7. [Handling authentication in GraphQL - Auth0](https://blog.pusher.com/handling-authentication-in-graphql-auth0/)
+8. [Handling authorization in GraphQL](https://pusher.com/tutorials/authorization-graphql)
 
 ## 2. Query
 

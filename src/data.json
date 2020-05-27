@@ -6,7 +6,8 @@
       "last": "kumar"
     },
     "user_email": "rajat.kumar@daffodilsw.com",
-    "user_state": "haryana"
+    "user_state": "haryana",
+    "friends": ["sumit", "chirag", "suvanker", "ankur"]
   },
   {
     "user_id": "2",
@@ -15,7 +16,8 @@
       "last": "majumdar"
     },
     "user_email": "suvanker@daffodilsw.com",
-    "user_state": "west bengal"
+    "user_state": "west bengal",
+    "friends": ["sumit", "chirag", "suvanker", "ankur"]
   },
   {
     "user_id": "3",
@@ -24,7 +26,8 @@
       "last": "Gaytonde"
     },
     "user_email": "ankur@daffodilsw.com",
-    "user_state": "utrakhand"
+    "user_state": "utrakhand",
+    "friends": ["sumit", "chirag", "suvanker", "ankur"]
   },
   {
     "user_id": "4",
@@ -33,6 +36,37 @@
       "last": "Tiwari"
     },
     "user_email": "tiwari@daffodilsw.com",
-    "user_state": "uttar pardesh"
+    "user_state": "uttar pardesh",
+    "friends": ["sumit", "chirag", "suvanker", "ankur"]
+  },
+  {
+    "user_id": "5",
+    "user_name": {
+      "first": "Gopal",
+      "last": "Patidar"
+    },
+    "user_email": "gopal@daffodilsw.com",
+    "user_state": "madhya pardesh",
+    "friends": ["sumit", "chirag", "suvanker", "ankur"]
+  },
+  {
+    "user_id": "5",
+    "user_name": {
+      "first": "Sumit",
+      "last": "Malik"
+    },
+    "user_email": "sumit@daffodilsw.com",
+    "user_state": "haryana",
+    "friends": ["sumit", "chirag", "suvanker", "ankur"]
+  },
+  {
+    "user_id": "6",
+    "user_name": {
+      "first": "Chirag",
+      "last": "Kalra"
+    },
+    "user_email": "chirag@daffodilsw.com",
+    "user_state": "haryana",
+    "friends": ["sumit", "chirag", "suvanker", "ankur"]
   }
 ]
