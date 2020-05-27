@@ -1,8 +1,8 @@
 import { GraphQLObjectType } from 'graphql';
 
-import users from '../data.json';
 import create_user_input from './input/create-user';
 import create_user_output from './output/create-user';
+import create_user_resolver from './resolver/create-user';
 import login_user_input from './input/login-user';
 import login_user_output from './output/login-user';
 import login_user_resolver from './resolver/login-user';
@@ -15,12 +15,7 @@ const root_mutation = new GraphQLObjectType({
       description: 'mutation to create a new user',
       type: create_user_output,
       args: create_user_input,
-      resolve: (root, args) => {
-        const user = args;
-        user.user_id = users.length + 1;
-        users.push(user);
-        return user;
-      },
+      resolve: create_user_resolver,
     },
     login_user: {
       name: 'login_user',
