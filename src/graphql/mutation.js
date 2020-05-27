@@ -1,8 +1,11 @@
 import { GraphQLObjectType } from 'graphql';
 
+import users from '../data.json';
 import create_user_input from './input/create-user';
 import create_user_output from './output/create-user';
-import users from '../data.json';
+import login_user_input from './input/login-user';
+import login_user_output from './output/login-user';
+import login_user_resolver from './resolver/login-user';
 
 const root_mutation = new GraphQLObjectType({
   name: 'root_mutation',
@@ -18,6 +21,13 @@ const root_mutation = new GraphQLObjectType({
         users.push(user);
         return user;
       },
+    },
+    login_user: {
+      name: 'login_user',
+      description: 'mutation to login user',
+      type: login_user_output,
+      args: login_user_input,
+      resolve: login_user_resolver,
     },
   }),
 });

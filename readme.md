@@ -2,13 +2,17 @@
 
 GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data.
 
-## Popular links
+## 1. Popular links
 
 1. [express-graphql](https://www.npmjs.com/package/express-graphql)
 2. [graphql](https://github.com/graphql/graphiql)
 3. [graphql.org/learn](https://graphql.org/learn)
+4. [Handling authentication in GraphQL - Introduction](https://blog.pusher.com/handling-authentication-in-graphql/)
+5. [Handling authentication in GraphQL - JWT](https://blog.pusher.com/handling-authentication-in-graphql-jwt/)
+6. [Handling authentication in GraphQL - Auth0](https://blog.pusher.com/handling-authentication-in-graphql-auth0/)
+7. [Handling authorization in GraphQL](https://pusher.com/tutorials/authorization-graphql)
 
-## Query
+## 2. Query
 
 - name
 - description
@@ -19,7 +23,7 @@ GraphQL is a query language for APIs and a runtime for fulfilling those queries 
   - args [input]
   - resolve(obj, args, context, info)
 
-### type (query)
+### (1). type (query)
 
 - name
 - description
@@ -28,12 +32,12 @@ GraphQL is a query language for APIs and a runtime for fulfilling those queries 
   - type
   - resolve
 
-### args (query)
+### (2). args (query)
 
 - description
 - type
 
-## Mutation
+## 3. Mutation
 
 - name
 - description
@@ -44,7 +48,7 @@ GraphQL is a query language for APIs and a runtime for fulfilling those queries 
   - args [input]
   - resolve(root,args,req,res)
 
-### type (mutation)
+### (1). type (mutation)
 
 - name
 - description
@@ -53,7 +57,7 @@ GraphQL is a query language for APIs and a runtime for fulfilling those queries 
   - type
   - resolve
 
-### args (mutation)
+### (2). args (mutation)
 
 - description
 - type
@@ -66,7 +70,7 @@ or
   - description
   - type
 
-### resolver
+### (3). resolver (query + mutation)
 
 A resolver function receives four arguments:
 
@@ -75,15 +79,33 @@ A resolver function receives four arguments:
 - context: A value which is provided to every resolver and holds important contextual information like the currently logged in user, or access to a database.
 - info: A value which holds field-specific information relevant to the current query as well as the schema details, also refer to type GraphQLResolveInfo for more details.
 
-## Queries and Mutations
+## 4. Queries and Mutations
 
 While query fields are executed in parallel, mutation fields run in series, one after the other.
 
-### 1. Fields
+### (1). Fields
 
-### 2. Arguments
+```graphql
+query{
+  find_user(user_id: "1") {
+    user_id
+    user_email
+  }
+}
+```
 
-### 3. Aliases
+### (2) Arguments
+
+```graphql
+query{
+  find_user(user_id: "1") {
+    user_id
+    user_email
+  }
+}
+```
+
+### (3). Aliases
 
 ```graphql
 query user_operation_name {
@@ -102,7 +124,7 @@ query user_operation_name {
 }
 ```
 
-### 4. Fragments
+### (4). Fragments
 
 GraphQL includes reusable units called fragments.
 Fragments let you construct sets of fields, and then include them in queries where you need to.
@@ -129,7 +151,7 @@ fragment fragment_1 on find_user_output{
 }
 ```
 
-### 5. Operation Name + Variables
+### (5). Operation Name + Variables
 
 ```graphql
 query user_operation_name($variable_1: String = "1", $variable_2: String = "2", $variable_4: String = "4") {
@@ -153,7 +175,7 @@ query user_operation_name($variable_1: String = "1", $variable_2: String = "2", 
 }
 ```
 
-### 6. Directives
+### (6). Directives
 
 A directive can be attached to a field or fragment inclusion, and can affect execution of the query in any way the server desires.
 The core GraphQL specification includes exactly two directives, which must be supported by any spec-compliant GraphQL server implementation:
@@ -180,7 +202,7 @@ query user_operation_name($variable_1: String = "2", $with_user_email:Boolean = 
 }
 ```
 
-### 7. __typename
+### (7). __typename
 
 ```graphql
 query user_operation_name($variable_1: String = "1"){
@@ -195,7 +217,7 @@ query user_operation_name($variable_1: String = "1"){
 }
 ```
 
-### 8. Inline Fragments
+### (8). Inline Fragments
 
 ```graphql
 query user_operation_name($variable_1: String = "1") {
@@ -210,7 +232,7 @@ query user_operation_name($variable_1: String = "1") {
 }
 ```
 
-### 9. Introspection
+### (9). Introspection
 
 ```graphql
 {
@@ -259,6 +281,46 @@ query user_operation_name($variable_1: String = "1") {
       description
       name
     }
+  }
+}
+```
+
+### (10). Curl requests
+
+- passing in body
+
+```curl
+curl --location --request POST 'http://localhost:4001/graphql' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+"query": "query($user_id:String = \"1\"){\n  find_user(user_id: $user_id){\n    user_name{\n      first\n      last\n    }\n  }\n}",
+"variables": { "user_id": "2" }
+}'
+```
+
+- using graphql schema
+
+```curl
+curl --location --request POST 'http://localhost:4001/graphql' \
+--header 'Content-Type: application/json' \
+--data-raw '{"query":"query($user_id:String = \"1\"){\n  find_user(user_id: $user_id){\n    user_name{\n      first\n      last\n    }\n  }\n}","variables":{"user_id":"1"}}'
+```
+
+- get request
+
+```curl
+curl --location --request GET 'http://localhost:4001/graphql?query=query($user_id:String%20=%20%221%22){%0A%20%20find_user(user_id:%20$user_id){%0A%20%20%20%20user_name{%0A%20%20%20%20%20%20first%0A%20%20%20%20%20%20last%0A%20%20%20%20}%0A%20%20}%0A}'
+```
+
+### (11). graphql_params
+
+```JSON
+{
+  "graphql_params": {
+    "query": "query($user_id:String = \"4\"){\n  find_user(user_id: $user_id){\n    user_name{\n      first\n      last\n    }\n  }\n}",
+    "variables": null,
+    "operationName": null,
+    "raw": false
   }
 }
 ```

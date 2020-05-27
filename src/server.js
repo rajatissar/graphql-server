@@ -16,14 +16,20 @@ const start_server = () => {
   );
   app.use(
     '/graphql',
-    express_HTTP({
+    express_HTTP((req, res, graphql_params) => ({
       schema,
-      graphiql: true, // presents GraphiQL when the GraphQL endpoint is loaded in a browser
-      pretty: true, // any JSON response will be pretty-printed,
+      rootValue: {
+        root: 'root_1',
+      },
       context: {
         graphql_context: 'graphql_context_1',
+        req,
+        res,
+        graphql_params,
       },
-    })
+      graphiql: true, // presents GraphiQL when the GraphQL endpoint is loaded in a browser
+      pretty: true, // any JSON response will be pretty-printed,
+    }))
   );
   app.listen(PORT, (error) => {
     if (error) {

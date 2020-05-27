@@ -1,7 +1,8 @@
 import { GraphQLObjectType } from 'graphql';
+
+import users from '../data.json';
 import find_user_input from './input/find-user';
 import find_user_output from './output/find-user';
-import users from '../data.json';
 
 const root_query = new GraphQLObjectType({
   name: 'root_query',
