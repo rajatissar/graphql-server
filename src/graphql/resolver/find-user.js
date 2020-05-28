@@ -3,6 +3,11 @@ import { authorize_user } from '../../middlleware/authorization';
 import users from '../../data.json';
 
 const find_user_resolver = async (obj, args, context, info) => {
+  const cache_user = await context.user_loader.load(0);
+  const cache_users = await context.user_loader.loadMany([2, 1, 3]);
+  console.log(`cache_user - ${JSON.stringify(cache_user)}`);
+  console.log(`cache_users - ${JSON.stringify(cache_users)}`);
+
   const is_authenticated_user = await authenticate_user(null, args.token);
 
   if (!is_authenticated_user && !args.is_authenticate) {

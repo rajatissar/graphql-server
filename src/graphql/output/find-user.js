@@ -58,7 +58,7 @@ const find_user_output = new GraphQLObjectType({
       type: new GraphQLList(GraphQLString),
       args: friends_args,
       resolve: (user, args, context, info) => {
-        const limit = args.limit || 0;
+        const limit = args.limit || user.friends.length;
         const offset = args.offset || 0;
         const offset_array = _.drop(user.friends, offset);
         return _.take(offset_array, limit);
