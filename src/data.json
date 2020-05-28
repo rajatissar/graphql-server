@@ -8,29 +8,29 @@
     "user_email": "rajat.kumar@daffodilsw.com",
     "user_state": "haryana",
     "friends": ["sumit", "chirag", "suvanker", "ankur"],
-    "role": "admin"
+    "roles": ["admin"]
   },
   {
     "user_id": "2",
     "user_name": {
       "first": "Suvankar",
-      "last": "majumdar"
+      "last": "majumder"
     },
     "user_email": "suvanker@daffodilsw.com",
     "user_state": "west bengal",
     "friends": ["sumit", "chirag", "suvanker", "ankur"],
-    "role": "admin"
+    "roles": ["admin"]
   },
   {
     "user_id": "3",
     "user_name": {
       "first": "Ankur",
-      "last": "Gaytonde"
+      "last": "Gahtori"
     },
     "user_email": "ankur@daffodilsw.com",
     "user_state": "utrakhand",
     "friends": ["sumit", "chirag", "suvanker", "ankur"],
-    "role": "user"
+    "roles": ["user"]
   },
   {
     "user_id": "4",
@@ -41,7 +41,7 @@
     "user_email": "tiwari@daffodilsw.com",
     "user_state": "uttar pardesh",
     "friends": ["sumit", "chirag", "suvanker", "ankur"],
-    "role": "user"
+    "roles": ["user"]
   },
   {
     "user_id": "5",
@@ -52,7 +52,7 @@
     "user_email": "gopal@daffodilsw.com",
     "user_state": "madhya pardesh",
     "friends": ["sumit", "chirag", "suvanker", "ankur"],
-    "role": "user"
+    "roles": ["user"]
   },
   {
     "user_id": "5",
@@ -63,7 +63,7 @@
     "user_email": "sumit@daffodilsw.com",
     "user_state": "haryana",
     "friends": ["sumit", "chirag", "suvanker", "ankur"],
-    "role": "admin"
+    "roles": ["admin"]
   },
   {
     "user_id": "6",
@@ -74,6 +74,6 @@
     "user_email": "chirag@daffodilsw.com",
     "user_state": "haryana",
     "friends": ["sumit", "chirag", "suvanker", "ankur"],
-    "role": "user"
+    "roles": ["user"]
   }
 ]

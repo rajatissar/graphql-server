@@ -19,7 +19,7 @@ const find_user_resolver = async (obj, args, context, info) => {
     user = users.filter((user_1) => user_1.user_state === user_state);
   }
   if (user.length) {
-    const is_authorized_user = await authorize_user(null, user[0].role);
+    const is_authorized_user = await authorize_user(null, user[0].roles);
     if (!is_authorized_user) {
       return {
         status: 'user_not_authorized',
