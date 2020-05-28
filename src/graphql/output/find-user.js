@@ -64,6 +64,11 @@ const find_user_output = new GraphQLObjectType({
         return _.take(offset_array, limit);
       },
     },
+    status: {
+      description: 'status of user (authentication)',
+      type: GraphQLString,
+      resolve: (user) => user.status,
+    },
   }),
 });
 

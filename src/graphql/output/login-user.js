@@ -36,6 +36,11 @@ const login_user_output = new GraphQLObjectType({
       type: GraphQLString,
       resolve: (user) => user.user_email,
     },
+    token: {
+      description: 'token for authentication',
+      type: GraphQLString,
+      resolve: (user) => user.token,
+    },
   }),
 });
 

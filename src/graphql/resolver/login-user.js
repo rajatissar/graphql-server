@@ -1,13 +1,17 @@
+import jwt from 'jsonwebtoken';
+
 import users from '../../data.json';
 
 const login_user_resolver = (obj, args, context, info) => {
-  const { user_email } = args;
-  let user = {};
-  if (user_email) {
-    user = users.filter((user_1) => user_1.user_email === user_email);
-  }
+  const user = users.filter((user_1) => user_1.user_email === args.user_email);
+
   if (user.length) {
-    return user[0];
+    const token = jwt.sign(args, 'secret', { expiresIn: 60 * 2 });
+
+    return {
+      user: user[0],
+      token,
+    };
   }
   return {};
 };

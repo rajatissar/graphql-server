@@ -33,6 +33,10 @@ const find_user_input = {
       },
     }),
   },
+  token: {
+    description: 'JWT token of user',
+    type: GraphQLString,
+  },
 };
 
 export default find_user_input;

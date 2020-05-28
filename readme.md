@@ -87,7 +87,7 @@ While query fields are executed in parallel, mutation fields run in series, one 
 ### (1). Fields
 
 ```graphql
-query{
+query {
   find_user(user_id: "1") {
     user_id
     user_email
@@ -98,7 +98,7 @@ query{
 ### (2) Arguments
 
 ```graphql
-query{
+query {
   find_user(user_id: "1") {
     user_id
     user_email
@@ -110,14 +110,14 @@ query{
 
 ```graphql
 query user_operation_name {
-  one: find_user(user_id:"1"){
-    user_name{
+  one: find_user(user_id: "1") {
+    user_name {
       first
       last
     }
   }
-  two: find_user(user_id:"2"){
-    user_name{
+  two: find_user(user_id: "2") {
+    user_name {
       first
       last
     }
@@ -132,19 +132,19 @@ Fragments let you construct sets of fields, and then include them in queries whe
 
 ```graphql
 query user_operation_name {
-  one: find_user(user_id:"1"){
+  one: find_user(user_id: "1") {
     ...fragment_1
   }
-  two: find_user(user_id:"2"){
+  two: find_user(user_id: "2") {
     ...fragment_1
-  },
-  not_found: find_user(user_id:"4"){
+  }
+  not_found: find_user(user_id: "4") {
     ...fragment_1
   }
 }
 
-fragment fragment_1 on find_user_output{
-  user_name{
+fragment fragment_1 on find_user_output {
+  user_name {
     first
     last
   }
@@ -155,7 +155,11 @@ fragment fragment_1 on find_user_output{
 ### (5). Operation Name + Variables
 
 ```graphql
-query user_operation_name($variable_1: String = "1", $variable_2: String = "2", $variable_4: String = "4") {
+query user_operation_name(
+  $variable_1: String = "1"
+  $variable_2: String = "2"
+  $variable_4: String = "4"
+) {
   one: find_user(user_id: $variable_1) {
     user_email
   }
@@ -185,8 +189,11 @@ The core GraphQL specification includes exactly two directives, which must be su
 - @skip(if: Boolean) Skip this field if the argument is true.
 
 ```graphql
-query user_operation_name($variable_1: String = "2", $with_user_email:Boolean = false){
-  find_user(user_id: $variable_1){
+query user_operation_name(
+  $variable_1: String = "2"
+  $with_user_email: Boolean = false
+) {
+  find_user(user_id: $variable_1) {
     user_name {
       first
       last
@@ -203,11 +210,11 @@ query user_operation_name($variable_1: String = "2", $with_user_email:Boolean = 
 }
 ```
 
-### (7). __typename
+### (7). \_\_typename
 
 ```graphql
-query user_operation_name($variable_1: String = "1"){
-  find_user(user_id: $variable_1){
+query user_operation_name($variable_1: String = "1") {
+  find_user(user_id: $variable_1) {
     __typename
     user_name {
       __typename
@@ -288,7 +295,13 @@ query user_operation_name($variable_1: String = "1") {
 
 ### (10). Curl requests
 
-- passing in body
+- GET request
+
+```curl
+curl --location --request GET 'http://localhost:4001/graphql?query=query($user_id:String%20=%20%221%22){%0A%20%20find_user(user_id:%20$user_id){%0A%20%20%20%20user_name{%0A%20%20%20%20%20%20first%0A%20%20%20%20%20%20last%0A%20%20%20%20}%0A%20%20}%0A}'
+```
+
+- POST request (passing in body)
 
 ```curl
 curl --location --request POST 'http://localhost:4001/graphql' \
@@ -299,18 +312,12 @@ curl --location --request POST 'http://localhost:4001/graphql' \
 }'
 ```
 
-- using graphql schema
+- POST request (using graphql schema)
 
 ```curl
 curl --location --request POST 'http://localhost:4001/graphql' \
 --header 'Content-Type: application/json' \
 --data-raw '{"query":"query($user_id:String = \"1\"){\n  find_user(user_id: $user_id){\n    user_name{\n      first\n      last\n    }\n  }\n}","variables":{"user_id":"1"}}'
-```
-
-- get request
-
-```curl
-curl --location --request GET 'http://localhost:4001/graphql?query=query($user_id:String%20=%20%221%22){%0A%20%20find_user(user_id:%20$user_id){%0A%20%20%20%20user_name{%0A%20%20%20%20%20%20first%0A%20%20%20%20%20%20last%0A%20%20%20%20}%0A%20%20}%0A}'
 ```
 
 ### (11). graphql_params
@@ -323,5 +330,14 @@ curl --location --request GET 'http://localhost:4001/graphql?query=query($user_i
     "operationName": null,
     "raw": false
   }
+}
+```
+
+### 12. Sample GraphQL Response
+
+```JSON
+{
+  "data": { ... },
+  "errors": [ ... ]
 }
 ```
