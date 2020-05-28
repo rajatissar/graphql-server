@@ -1,4 +1,4 @@
-import { GraphQLString, GraphQLEnumType } from 'graphql';
+import { GraphQLString, GraphQLBoolean, GraphQLEnumType } from 'graphql';
 
 const find_user_input = {
   user_id: {
@@ -36,6 +36,10 @@ const find_user_input = {
   token: {
     description: 'JWT token of user',
     type: GraphQLString,
+  },
+  is_authenticate: {
+    description: 'whether user is authenticated or not',
+    type: GraphQLBoolean,
   },
 };
 
