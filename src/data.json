@@ -7,7 +7,26 @@
     },
     "user_email": "rajat.kumar@daffodilsw.com",
     "user_state": "haryana",
-    "friends": ["sumit", "chirag", "suvanker", "ankur"],
+    "friends": [
+      {
+        "user_id": "12"
+      },
+      {
+        "user_id": "13"
+      },
+      {
+        "user_id": "14"
+      },
+      {
+        "user_id": "15"
+      },
+      {
+        "user_id": "16"
+      },
+      {
+        "user_id": "17"
+      }
+    ],
     "roles": ["admin"]
   },
   {
@@ -18,7 +37,26 @@
     },
     "user_email": "suvanker@daffodilsw.com",
     "user_state": "west bengal",
-    "friends": ["sumit", "chirag", "suvanker", "ankur"],
+    "friends": [
+      {
+        "user_id": "11"
+      },
+      {
+        "user_id": "13"
+      },
+      {
+        "user_id": "14"
+      },
+      {
+        "user_id": "15"
+      },
+      {
+        "user_id": "16"
+      },
+      {
+        "user_id": "17"
+      }
+    ],
     "roles": ["admin"]
   },
   {
@@ -29,7 +67,26 @@
     },
     "user_email": "ankur@daffodilsw.com",
     "user_state": "utrakhand",
-    "friends": ["sumit", "chirag", "suvanker", "ankur"],
+    "friends": [
+      {
+        "user_id": "11"
+      },
+      {
+        "user_id": "12"
+      },
+      {
+        "user_id": "14"
+      },
+      {
+        "user_id": "15"
+      },
+      {
+        "user_id": "16"
+      },
+      {
+        "user_id": "17"
+      }
+    ],
     "roles": ["user"]
   },
   {
@@ -40,7 +97,26 @@
     },
     "user_email": "tiwari@daffodilsw.com",
     "user_state": "uttar pardesh",
-    "friends": ["sumit", "chirag", "suvanker", "ankur"],
+    "friends": [
+      {
+        "user_id": "11"
+      },
+      {
+        "user_id": "12"
+      },
+      {
+        "user_id": "13"
+      },
+      {
+        "user_id": "15"
+      },
+      {
+        "user_id": "16"
+      },
+      {
+        "user_id": "17"
+      }
+    ],
     "roles": ["user"]
   },
   {
@@ -51,7 +127,26 @@
     },
     "user_email": "gopal@daffodilsw.com",
     "user_state": "madhya pardesh",
-    "friends": ["sumit", "chirag", "suvanker", "ankur"],
+    "friends": [
+      {
+        "user_id": "11"
+      },
+      {
+        "user_id": "12"
+      },
+      {
+        "user_id": "13"
+      },
+      {
+        "user_id": "14"
+      },
+      {
+        "user_id": "16"
+      },
+      {
+        "user_id": "17"
+      }
+    ],
     "roles": ["user"]
   },
   {
@@ -62,7 +157,27 @@
     },
     "user_email": "sumit@daffodilsw.com",
     "user_state": "haryana",
-    "friends": ["sumit", "chirag", "suvanker", "ankur"],
+    "friends": [
+      {
+        "user_id": "11"
+      },
+      {
+        "user_id": "12"
+      },
+      {
+        "user_id": "13"
+      },
+      {
+        "user_id": "14"
+      },
+      {
+        "user_id": "15"
+      },
+
+      {
+        "user_id": "17"
+      }
+    ],
     "roles": ["admin"]
   },
   {
@@ -73,7 +188,26 @@
     },
     "user_email": "chirag@daffodilsw.com",
     "user_state": "haryana",
-    "friends": ["sumit", "chirag", "suvanker", "ankur"],
+    "friends": [
+      {
+        "user_id": "11"
+      },
+      {
+        "user_id": "12"
+      },
+      {
+        "user_id": "13"
+      },
+      {
+        "user_id": "14"
+      },
+      {
+        "user_id": "15"
+      },
+      {
+        "user_id": "16"
+      }
+    ],
     "roles": ["user"]
   }
 ]

@@ -55,7 +55,7 @@ const find_user_output = new GraphQLObjectType({
     },
     friends: {
       description: 'friends of user',
-      type: new GraphQLList(GraphQLString),
+      type: new GraphQLList(find_user_output),
       args: friends_args,
       resolve: (user, args, context, info) => {
         const limit = args.limit || user.friends.length;
