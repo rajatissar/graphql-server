@@ -1,14 +1,29 @@
+import _ from 'lodash';
+
 import { authenticate_user } from '../../middlleware/authentication';
 import { authorize_user } from '../../middlleware/authorization';
 import users from '../../data.json';
 
 const find_user_resolver = async (obj, args, context, info) => {
-  const cache_user = await context.user_loader.load(0);
-  const cache_users = await context.user_loader.loadMany([2, 1, 3]);
-  console.log(`cache_user - ${JSON.stringify(cache_user)}`);
-  console.log(`cache_users - ${JSON.stringify(cache_users)}`);
+  // const cache_user = await context.user_loader.load(0);
+  // const cache_users = await context.user_loader.loadMany([2, 1, 3]);
+  // console.log(`cache_user - ${JSON.stringify(cache_user)}`);
+  // console.log(`cache_users - ${JSON.stringify(cache_users)}`);
 
-  const is_authenticated_user = await authenticate_user(null, args.token);
+  let authorization_token = _.get(context, 'authorization_token', null);
+  authorization_token =
+    authorization_token && authorization_token.split(' ')[1];
+
+  console.log(
+    `authorization_token - ${authorization_token} - args.token = ${args.token}`
+  );
+
+  const is_authenticated_user = await authenticate_user(
+    null,
+    authorization_token || args.token
+  );
+
+  console.log(`is_authenticated_user - ${is_authenticated_user}`);
 
   if (!is_authenticated_user && !args.is_authenticate) {
     return {

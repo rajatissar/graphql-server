@@ -35,6 +35,7 @@ const start_server = () => {
           // res,
           // graphql_params,
           user_loader,
+          authorization_token: req.headers.authorization,
         },
         graphiql: true, // presents GraphiQL when the GraphQL endpoint is loaded in a browser
         pretty: true, // any JSON response will be pretty-printed,
