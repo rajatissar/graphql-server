@@ -1,6 +1,7 @@
 import express from 'express';
 import body_parser from 'body-parser';
 import express_HTTP from 'express-graphql';
+import { graphqlUploadExpress } from 'graphql-upload';
 import DataLoader from 'dataloader';
 
 import schema from './graphql/schema';
@@ -23,6 +24,7 @@ const start_server = () => {
   );
   app.use(
     '/graphql',
+    graphqlUploadExpress(),
     express_HTTP((req, res, graphql_params) => {
       const user_loader = new DataLoader(user_loader_batch_function);
       return {

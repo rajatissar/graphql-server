@@ -9,7 +9,8 @@
     "camelcase",
     "graphiql",
     "dataloader",
-    "middlleware"
+    "middlleware",
+    "mimetype"
   ],
   "editor.tabSize": 2
 }
