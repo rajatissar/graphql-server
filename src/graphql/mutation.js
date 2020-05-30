@@ -27,4 +27,4 @@ const root_mutation = new GraphQLObjectType({
   }),
 });
 
-export { root_mutation };
+export default root_mutation;

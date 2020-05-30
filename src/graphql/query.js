@@ -18,4 +18,4 @@ const root_query = new GraphQLObjectType({
   }),
 });
 
-export { root_query };
+export default root_query;

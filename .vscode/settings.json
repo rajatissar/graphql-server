@@ -1,3 +1,15 @@
 {
-  "editor.formatOnSave": true
+  "editor.minimap.enabled": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "workbench.colorTheme": "Monokai",
+  "cSpell.userWords": [
+    "readonly",
+    "camelcase",
+    "graphiql",
+    "dataloader",
+    "middlleware"
+  ],
+  "editor.tabSize": 2
 }

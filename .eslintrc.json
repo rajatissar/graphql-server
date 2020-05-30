@@ -1,9 +1,11 @@
 {
   "env": {
-    "browser": true,
-    "es6": true
+    "es6": true,
+    "node": true
   },
-  "extends": ["airbnb-base"],
+  "extends": [
+    "airbnb-base"
+  ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -15,6 +17,6 @@
   "rules": {
     "camelcase": "off",
     "comma-dangle": "off",
-    "import/prefer-default-export": "off"
+    "no-console": "off"
   }
 }

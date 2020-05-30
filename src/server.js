@@ -34,12 +34,12 @@ const start_server = () => {
           // graphql_context: 'graphql_context_1',
           // req,
           // res,
-          // graphql_params,
+          graphql_params,
           user_loader,
-          authorization_token: req.headers.authorization,
+          authentication_token: req.headers.authorization,
           read_db,
         },
-        graphiql: true, // presents GraphiQL when the GraphQL endpoint is loaded in a browser
+        graphiql: true, // presents graphiql when the GraphQL endpoint is loaded in a browser
         pretty: true, // any JSON response will be pretty-printed,
       };
     })
