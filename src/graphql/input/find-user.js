@@ -41,6 +41,10 @@ const find_user_input = {
     description: 'whether user is authenticated or not',
     type: GraphQLBoolean,
   },
+  is_authorize: {
+    description: 'whether user is authorized or not',
+    type: GraphQLBoolean,
+  },
 };
 
 export default find_user_input;

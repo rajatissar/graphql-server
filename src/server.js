@@ -4,6 +4,7 @@ import express_HTTP from 'express-graphql';
 import DataLoader from 'dataloader';
 
 import schema from './graphql/schema';
+import { read_db } from './database/mysql';
 import users from './data.json';
 
 const PORT = process.env.PORT || 4001;
@@ -36,6 +37,7 @@ const start_server = () => {
           // graphql_params,
           user_loader,
           authorization_token: req.headers.authorization,
+          read_db,
         },
         graphiql: true, // presents GraphiQL when the GraphQL endpoint is loaded in a browser
         pretty: true, // any JSON response will be pretty-printed,
