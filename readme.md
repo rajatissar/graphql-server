@@ -320,6 +320,15 @@ curl --location --request POST 'http://localhost:4001/graphql' \
 --data-raw '{"query":"query($user_id:String = \"1\"){\n  find_user(user_id: $user_id){\n    user_name{\n      first\n      last\n    }\n  }\n}","variables":{"user_id":"1"}}'
 ```
 
+- Image upload
+
+```curl
+curl --location --request POST 'http://localhost:4001/graphql' \
+--form 'operations={"query": "mutation ($image_var: Upload){\n  upload_image(image: $image_var){\n    status\n  }\n}", "variables": { "file": null}}' \
+--form 'map={ "nfile": ["variables.image_var"] }' \
+--form 'nfile=@/home/rajat/Downloads/sample-documents/sample.jpeg'
+```
+
 ### (11). graphql_params
 
 ```JSON
@@ -333,11 +342,34 @@ curl --location --request POST 'http://localhost:4001/graphql' \
 }
 ```
 
-### 12. Sample GraphQL Response
+### (12). Sample GraphQL Response
 
 ```JSON
 {
   "data": { ... },
   "errors": [ ... ]
 }
+```
+
+## 5. TODO
+
+- interfaces
+- union type
+- input type
+- Cursor Based Pagination
+- Global Object Identification
+- Caching
+- subscription
+
+```graphql
+edges {
+        node {
+          name
+        }
+        cursor
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
 ```
